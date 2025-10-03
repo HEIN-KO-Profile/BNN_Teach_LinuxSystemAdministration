@@ -112,4 +112,7 @@ if the connection doesn't satrt automatically
 - `nmcli con up static`
 
 Homework:
-Create one DHCP connection (down) and one static connection (up).
+- Create one DHCP connection (down) and one static connection (up).
+- `use nmcli con shown`
+- `ftp /21/tp/permanent add`
+
