@@ -31,10 +31,14 @@ Managing Interfaces
 - (If not installed:
 - `sudo apt install net-tools` for Ubuntu
 - `dnf install net-tools -y` for Rocky/Fedora)
-
+```bash
+systemctl status chronyd
+systemctl start chronyd
+systemctl enable chronyd
+```
 Ethernet → enp...
 Loopback → lo (127.0.0.1)
-1. IPv4/IPv6: 'ip a'
+1. IPv4/IPv6: `ip a`
 2. Subnet:
 
 dnf install ipcalc
