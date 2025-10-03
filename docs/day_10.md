@@ -1,10 +1,10 @@
 ---
-Title: "Day 10: Linux Networking - NTP Setup, Interface Management, DHCP, Static, Firewalls, SSH, Kernel Management"
+Title: "Day 10: NTP Service, Linux Networking - Linux to Linux, Interface Management, Managing Connections, DHCP, Static, Managing Linux Firewall"
 ---
 
 ## Day 10: Linux Networking
 
-### Subtitle: Interface Management, DHCP, Static, NTP Setup, Firewalls, SSH, Kernel Management
+### Subtitle: NTP Service, Linux Networking - Linux to Linux, Interface Management, Managing Connections, DHCP, Static, Managing Linux Firewall
 
 These are the Day 10 notes.
 
