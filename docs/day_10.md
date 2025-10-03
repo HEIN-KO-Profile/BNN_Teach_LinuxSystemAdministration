@@ -9,7 +9,8 @@ This is the Day 10 notes.
 ## A little subtitle
 Write your notes here. You can add pictures, lists, and code blocks.
 
-![Linux File System Hierarchy](images/File System Hierarchy.jpg)
+![Linux File System Hierarchy](images/File%20System%20Hierarchy.jpg)
+
 
 
 
