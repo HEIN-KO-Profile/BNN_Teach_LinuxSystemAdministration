@@ -18,9 +18,7 @@ This is the Day 10 notes.
 - `systemctl enable chronyd`  
 - Find NTP server address for your region in browser  
 - Edit configuration:  
-  ```bash
-- `vim /etc/chrony.conf`
-
+ - `vim /etc/chrony.conf`
 - Restart service:
 - `systemctl restart chronyd`
 
@@ -28,22 +26,16 @@ This is the Day 10 notes.
 Linux Networking — Linux to Linux
 Managing Interfaces
 
-Check network interfaces:
-
-ifconfig
-
-
-(If not installed:
-sudo apt install net-tools for Ubuntu
-dnf install net-tools -y for Rocky/Fedora)
+- Check network interfaces: (ethernet, wireless)
+- `ipconfig`
+- (If not installed:
+- `sudo apt install net-tools` for Ubuntu
+- `dnf install net-tools -y` for Rocky/Fedora)
 
 Ethernet → enp...
-
 Loopback → lo (127.0.0.1)
-
-IPv4/IPv6: ip a
-
-Subnet:
+1. IPv4/IPv6: ip a
+2. Subnet:
 
 dnf install ipcalc
 ipcalc 192.168.7.121/24
