@@ -1,5 +1,5 @@
 ---
-title: "Day 10: Linux Networking - Interface Management, DHCP, Static, NTP Setup, Firewalls, SELinux, SSH, Kernel Management"
+Title: "Day 10: Linux Networking - Interface Management, DHCP, Static, NTP Setup, Firewalls, SELinux, SSH, Kernel Management"
 ---
 
 # Day 10: Linux Networking
