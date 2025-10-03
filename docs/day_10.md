@@ -19,10 +19,11 @@ This is the Day 10 notes.
 - Find NTP server address for your region in browser  
 - Edit configuration:  
   ```bash
-- vim /etc/chrony.conf
-- Restart service:
+- `vim /etc/chrony.conf`
 
-systemctl restart chronyd
+- Restart service:
+- `systemctl restart chronyd`
+
 
 Linux Networking — Linux to Linux
 Managing Interfaces
