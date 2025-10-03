@@ -1,5 +1,5 @@
 ---
-Title: "Day 11: SE Linux * Open SSH Server
+Title: "Day 11: SE Linux & Open SSH Server"
 ---
 
 # Day 11: SE Linux & Open SSH Server
@@ -15,12 +15,12 @@ For security
 
 - SE Linux Mode (1. Enforcing , 2. Permissive, 3. Disable)
 
-Types of SE Linux
+Modes of SE Linux
 1. Enforcing (Labeling & Policy)
 2. Permissive (Labeling)
 3. Disable
 
-- Route for SE Linux
+Route for SE Linux
 - client <----> Firewall <---> SE Linux <---> Server
 
 - `getenforce` (check the mode of SE Linux)
@@ -28,13 +28,18 @@ Types of SE Linux
 - 0 = permissive
 - 1 = Enforcing
 
-- For permanent changing mode use vim
+For permanent changing mode use vim
 - `vim /etc/selinux/config`
+- SELINUX=enforcing/permissice/disabled
+- ESE
+- :wq!
 
 - `semanage` (to manage SE Linux)
 - `dnf provides semanage` (to check the package manager)
+- `dnf install policycoreutils-python-utils`
 - `seinfo`       (to get the information about SE Linux)
-- `dnf provide seinfo`
+- `dnf provides seinfo`
+- `dnf install setools-console-4.5.1-4.el10.x86_64`
 
 ### Open SSH Server 
 Route
@@ -52,34 +57,38 @@ Use SSH Server for
 1. package install (openssh-server)
 - `dnf install openssh-server -y`
   
-2. enable sshd(check)
+2. status/start/enable sshd(check)
 - `systemctl status sshd`
 - `systemctl start sshd`
 - `systemctl enable sshd`
   
-3. add firewall
+3. allow firewall rules (survice & port)
 - `firewall-cmd --permanent --add-service--ssh`
 - `firewal-cmd -- permanent --add-port=22/tc;`
 - `firewall-cmd --reload`
 
+4. Checking Users Key
 - to check key (`cd /root/.ssh/` )
 - `cat -n autorized_keys`
 - `cat /dev/nullssh-copy-id -i /root/.ssh/id.rsa.pub root@servera`
-> authorized_keys (deleting the keys)
+- `rm -rf authorized_keys` (deleting the keys)
 
-4.User Authentication
+5. User Authentication
 - `tail /etc/passwd` (check user)
 - `passwd user1`     (set passwd)
 - `vim /etc/ssh/sshd_config`
-- Shift+a,
 - Shift+g
+- Shift+a
 - AllowUsers user_name
+- ESC
 - :wq!
 - `systemctl restart sshd` (restart service)
 - `last`
 - `who`
 
 ### SSH Port Forwarding (changing port number)
+
+#### Server Side
 - `default port SSH =22/tcp`
 - `vim /etc/ssh/sshd_config` (change port number in line 21)
 - `systemctl restart sshd`
@@ -91,33 +100,47 @@ Use SSH Server for
 - `semanage port -a -t ssh_port_t -p tcp port_number` (adding port)
 - `semanage port -d -t ssh_port_t -p tcp port_number` (deleting port)
 
-- checking ports
-- `ss -ntlp`
-
 #### Client side
 
+1. Binding Server IP and Host Name
+- `vim /etc/hosts`       (to change severname from ip , change ip to name)
+- i
+- server_ip_address     server_name
+- ESC
+- :wq!
+  
 2. Data Transfer
-vim /etc/hosts (to change severname from ip , change ip to name)
-scp source_file root@server:~/ (sending file from client to server)
-scp -r source_dir root@server:~/
-scp root@servera:~/ ./              (getting file from server)
-sftp root@servera        (ssh file transfer protocoal)
-sftp     (to check in server command - ls , to check in local command  - lls)
-sftp> put 
+- `scp source_file root@server:~/ `     (sending file from client to server)
+- `scp -r source_dir root@server:~/`
+- `scp root@servera:~/file_name ./ `             (getting file from server)
+- `sftp root@servera`       (ssh file transfer protocoal)
+- sftp    (to check in server command - ls , to check in local command  - lls)
+- sftp> get file_name
+- sftp> put 
 
 3. Key Authentication
-a. generate SSH Key
-ssh-keygen
-b. send key to server
-ssh-copy-id -i /root/.ssh/id.rsa.pub root@servera
-to check  (ssh root@servera)
+a. generate SSH Key in Client
+- `ssh-keygen`
+b. copy & send key to server
+- `ssh-copy-id -i /root/.ssh/id.rsa.pub root@servera`
+to check  (`ssh root@servera`)
 
-4.User Authentication
-ssh user_name@servera
+4. User Authentication
+- `ssh user_name@servera`
+- `whoami`
+- `su - root`     (Changing to root user)
+
 After SSH Port forwarding (changing port number)
 ssh -p new_port_number root@servera
 
-Managing Karnel Version (setting default karnel)
+### SSH Port Forwarding (changing port number)
+
+#### Client Side
+
+- checking ports
+- `ss -ntlp`
+
+### Managing Karnel Version (setting default karnel)
 uname -r (to check karnel version)
 yum list kernal
 yum update karnel
