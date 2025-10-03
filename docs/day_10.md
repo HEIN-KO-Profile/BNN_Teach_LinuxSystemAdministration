@@ -103,12 +103,13 @@ to change connection name (use two connections types - dhcp (auto ) or static (m
 - `systemctl restart NetworkManager`
 
 Example for DHCP connection:
-`nmcli con add con-name "dhcp" type ethernet ifname enp0s3 ipv4.method auto ipv4.dns "8.8.8.8, 8.8.4.4" autoconnect yes`
+- `nmcli con add con-name "dhcp" type ethernet ifname enp0s3 ipv4.method auto ipv4.dns "8.8.8.8, 8.8.4.4" autoconnect yes`
 
 Example for Static connection:
-`nmcli con add con-name "static" type ethernet ifname enp0s3 ipv4.method manual ipv4.addresses 192.168.31.210/24 ipv4.gateway 192.168.31.1 ipv4.dns "8.8.8.8, 8.8.4.4" autoconnect yes`
+- `nmcli con add con-name "static" type ethernet ifname enp0s3 ipv4.method manual ipv4.addresses 192.168.31.210/24 ipv4.gateway 192.168.31.1 ipv4.dns "8.8.8.8, 8.8.4.4" autoconnect yes`
 
 if the connection doesn't satrt automatically
-`nmcli con up static`
+- `nmcli con up static`
+
 Homework:
 Create one DHCP connection (down) and one static connection (up).
