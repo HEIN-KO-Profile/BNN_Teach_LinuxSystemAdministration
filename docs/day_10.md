@@ -1,10 +1,10 @@
 ---
-Title: "Day 10: Linux Networking - Interface Management, DHCP, Static, NTP Setup, Firewalls, SELinux, SSH, Kernel Management"
+Title: "Day 10: Linux Networking - NTP Setup, Interface Management, DHCP, Static, Firewalls, SSH, Kernel Management"
 ---
 
-### Day 10: Linux Networking
+## Day 10: Linux Networking
 
-## Subtitle: Interface Management, DHCP, Static, NTP Setup, Firewalls, SELinux, SSH, Kernel Management
+### Subtitle: Interface Management, DHCP, Static, NTP Setup, Firewalls, SSH, Kernel Management
 
 These are the Day 10 notes.
 
@@ -24,7 +24,8 @@ These are the Day 10 notes.
 
  ### Linux Networking - Linux to Linux
 Linux Networking — Linux to Linux
-Managing Interfaces
+
+### Managing Interfaces
 
 - Check network interfaces: (ethernet, wireless)
 - `ipconfig`
@@ -47,8 +48,9 @@ Loopback → lo (127.0.0.1)
 
 
 
-## Managing Connections
+### Managing Connections
 
+#### Ethernet
 On a Linux server, you typically manage several types of network connections, depending on what services and interfaces are in use. Here’s a breakdown:
 🔹 1. Ethernet (Wired)
 Standard physical network connection.
@@ -111,8 +113,49 @@ Example for Static connection:
 if the connection doesn't satrt automatically
 - `nmcli con up static`
 
+Using File from Host Computer with SSH
+- `sudo apt install ssh`
+- `sudo systemctl staus ssh`
+- `sudo systemctl start ssh`
+- `sudo systemctl eangle ssh`
+- check Ubuntu ip by `ifconfig`
+- `scp hierarchey.png ubutntu @192.168.31.31:~/`
+
+  
+#### Wireless
+- `ifconfig`    (Check for wireless - start with wl)
+- `nmcli radio wifi`
+- `nmcli radio wifi on`
+- `nmcli radio wifit off`
+- `nmcli radio wifi list`
+- `nmcli device wifi connect wifi_ssid password wifi_password`
+- `nmcli device show-password`
+
+### Managing Linux Firewall (Hardware Firewall & Software Firewall)
+- firewalld (RPM Base) & ufw (Debian Base)
+- `systemctl status firewalld`
+- `systemctl enable firewalld`
+- `firewall-cmd --add-service=ftp`  (add services to firewall)
+- `firewall-cmd --list-services`    (checking available services)
+- `cat /usr/lib/firewalld/services/ftp.xml`  (Looking for port number)
+- `cat /usr/lib/firewalld/services/ssh.xml`
+- `firewall-cmd --add-port=21/tcp`           (add in port number temporary)
+- `firewall-cmd --list-port`
+- `firewall-cmd --reload`
+- `firewall-cmd --permanent --add-service=ftp` (Permanent adding)
+- `firewall-cmd --list-services`
+- `firewall-cmd --reload`
+- `firewall-cmd --permanent --add-port=21/tcp`
+- `firewall-cmd --list-port`
+- `firewall-cmd --reload`
+  
+- `firewall-cmd --list-services`
+- `firewall-cmd --permanent --remove-service=ftp`
+- `firewall-cmd --list-port`
+- `firewall-cmd --permanent --remove-port=21/tcp`
+- `firewall-cmd --reload`
+
 Homework:
 - Create one DHCP connection (down) and one static connection (up).
 - use `nmcli con shown`
-- `ftp /21/tp/permanent add`
-
+- ftp /21/tp/permanent add
