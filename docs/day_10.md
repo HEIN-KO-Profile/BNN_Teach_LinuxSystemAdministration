@@ -6,7 +6,7 @@ title: "Day 10: Linux Networking - Interface Management, DHCP, Static, NTP Setup
 
 ## Subtitle: Interface Management, DHCP, Static, NTP Setup, Firewalls, SELinux, SSH, Kernel Management
 
-This is the Day 10 notes.
+These are the Day 10 notes.
 
 ---
 
@@ -21,12 +21,8 @@ This is the Day 10 notes.
  - `vim /etc/chrony.conf`
 - Restart service:
 - `systemctl restart chronyd`
-  ```bash
-systemctl status chronyd
-systemctl start chronyd
-systemctl enable chronyd
 
-
+ ### Linux Networking - Linux to Linux
 Linux Networking — Linux to Linux
 Managing Interfaces
 
@@ -38,7 +34,7 @@ Managing Interfaces
 
 Ethernet → enp...
 Loopback → lo (127.0.0.1)
-1. IPv4/IPv6: ip a
+1. IPv4/IPv6: 'ip a'
 2. Subnet:
 
 dnf install ipcalc
