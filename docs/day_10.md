@@ -21,6 +21,10 @@ This is the Day 10 notes.
  - `vim /etc/chrony.conf`
 - Restart service:
 - `systemctl restart chronyd`
+  ```bash
+systemctl status chronyd
+systemctl start chronyd
+systemctl enable chronyd
 
 
 Linux Networking — Linux to Linux
