@@ -1,5 +1,5 @@
 ---
-title: Day 10: Linux Networking - Interface Management, DHCP, Static), NTP Setup, About Firewann and FirewallID
+title: "Day 10: Linux Networking - Interface Management, DHCP, Static, NTP Setup, About Firewān and FirewallID"
 ---
 
 # Day 10: Linux Networking - Interface Management, DHCP, Static), NTP Setup, About Firewann and FirewallID
