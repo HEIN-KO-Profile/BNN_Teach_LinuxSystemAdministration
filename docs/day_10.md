@@ -2,7 +2,7 @@
 Title: "Day 10: Linux Networking - Interface Management, DHCP, Static, NTP Setup, Firewalls, SELinux, SSH, Kernel Management"
 ---
 
-# Day 10: Linux Networking
+### Day 10: Linux Networking
 
 ## Subtitle: Interface Management, DHCP, Static, NTP Setup, Firewalls, SELinux, SSH, Kernel Management
 
@@ -10,7 +10,7 @@ These are the Day 10 notes.
 
 ---
 
-### NTP Service (Network Time Protocol use in Bank)
+## NTP Service (Network Time Protocol use in Bank)
 
 - `timedatectl` → Check NTP service  
 - `systemctl status chronyd`  
@@ -47,7 +47,7 @@ Loopback → lo (127.0.0.1)
 
 
 
-Managing Connections
+## Managing Connections
 
 On a Linux server, you typically manage several types of network connections, depending on what services and interfaces are in use. Here’s a breakdown:
 🔹 1. Ethernet (Wired)
