@@ -6,6 +6,7 @@ Title: "Day 11: OpenSSH-Server ( data transfer, user authentication, key authent
 
 ## Subtitle: Interface Management, DHCP, Static, NTP Setup, Firewalls, SELinux, SSH, Kernel Management
 ### SE Linux (Security Enhance Linux)
+
 For security 
 1. File Permission
 2. Users/Groups Management
@@ -17,12 +18,12 @@ For security
 - Enforcing (Labeling  & Policy)
 
 Route for SE Linux
-client <----> Firewall <---> SE Linux <---> Server
+- client <----> Firewall <---> SE Linux <---> Server
 
 - `getenforce` (check the mode of SE Linux)
 - `setenforce 0` (temporary changing mode)
-0 = permissive
-1 = Enforcing
+- 0 = permissive
+- 1 = Enforcing
 
 for permanent changing mode use vim
 - `vim /etc/selinux/config`
@@ -34,59 +35,64 @@ for permanent changing mode use vim
 
 ### Open SSH Server 
 Route
-Remote Machine (Server, Personal) <---- ssh -----> client devices
+- Remote Machine (Server, Personal) <---- ssh -----> client devices
 
-use SSH Server for 
+Use SSH Server for 
 1. Remote login
 2. Data transfer
 3. Key Authentication
 4. User Authentication
 
-- Server side
+#### Server side
 - Remote Machine ( install openssh services)
 
 1. package install (openssh-server)
 - `dnf install openssh-server -y`
+  
 2. enable sshd(check)
 - `systemctl status sshd`
 - `systemctl start sshd`
 - `systemctl enable sshd`
+  
 3. add firewall
 - `firewall-cmd --permanent --add-service--ssh`
 - `firewal-cmd -- permanent --add-port=22/tc;`
 - `firewall-cmd --reload`
 
-- to check key (cd /root/.ssh/ )
-cat -n autorized_keys
-cat /dev/nullssh-copy-id -i /root/.ssh/id.rsa.pub root@servera
+- to check key (`cd /root/.ssh/` )
+- `cat -n autorized_keys`
+- `cat /dev/nullssh-copy-id -i /root/.ssh/id.rsa.pub root@servera`
 > authorized_keys (deleting the keys)
+
 4.User Authentication
-tail /etc/passwd (check user)
-passwd user1     (set passwd)
-vim /etc/ssh/sshd_config
-Shift+G, Shift+a
-AllowUsers user_name
-:wq!
-systemctl restart sshd (restart service)
-last 
-who
+- `tail /etc/passwd` (check user)
+- `passwd user1`     (set passwd)
+- `vim /etc/ssh/sshd_config`
+- Shift+a,
+- Shift+g
+- AllowUsers user_name
+- :wq!
+- `systemctl restart sshd` (restart service)
+- `last`
+- `who`
 
-SSH Port forwarding (changing port number)
-default port SSH =22/tcp
-vim /etc/ssh/sshd_config (change port number in line 21)
-systemctl restart sshd
-systemctl status sshd
-change the port number in firewall
-firewal-cmd -- permanent --add-port=2222/tcp
-add the port number in SE Linux
-semanage port -l | grep "ssh"
-semanage port -a -t ssh_port_t -p tcp port_number (adding port)
-semanage port -d -t ssh_port_t -p tcp port_number (deleting port)
+### SSH Port Forwarding (changing port number)
+- `default port SSH =22/tcp`
+- `vim /etc/ssh/sshd_config` (change port number in line 21)
+- `systemctl restart sshd`
+- `systemctl status sshd`
+- change the port number in firewall
+- `firewal-cmd -- permanent --add-port=2222/tcp`
+- add the port number in SE Linux
+- `semanage port -l | grep "ssh"`
+- `semanage port -a -t ssh_port_t -p tcp port_number` (adding port)
+- `semanage port -d -t ssh_port_t -p tcp port_number` (deleting port)
 
-checking ports
-ss -ntlp
+- checking ports
+- `ss -ntlp`
 
-Client side
+#### Client side
+
 2. Data Transfer
 vim /etc/hosts (to change severname from ip , change ip to name)
 scp source_file root@server:~/ (sending file from client to server)
