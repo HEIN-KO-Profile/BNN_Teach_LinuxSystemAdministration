@@ -1,10 +1,10 @@
 ---
-Title: "Day 11: OpenSSH-Server ( data transfer, user authentication, key authentication, port forwarding), E Linux, Manage Kernel version and KVM Intro"
+Title: "Day 11: SE Linux * Open SSH Server
 ---
 
 # Day 11: SE Linux & Open SSH Server
 
-## Subtitle: Interface Management, DHCP, Static, NTP Setup, Firewalls, SELinux, SSH, Kernel Management
+## Subtitle: SE Linux, Open SSH Server, SSH Port Forwarding
 ### SE Linux (Security Enhance Linux)
 
 For security 
@@ -14,10 +14,13 @@ For security
 4. SE Linux
 
 - SE Linux Mode (1. Enforcing , 2. Permissive, 3. Disable)
-- Permissive (Labeling)
-- Enforcing (Labeling  & Policy)
 
-Route for SE Linux
+Types of SE Linux
+1. Enforcing (Labeling & Policy)
+2. Permissive (Labeling)
+3. Disable
+
+- Route for SE Linux
 - client <----> Firewall <---> SE Linux <---> Server
 
 - `getenforce` (check the mode of SE Linux)
@@ -25,7 +28,7 @@ Route for SE Linux
 - 0 = permissive
 - 1 = Enforcing
 
-for permanent changing mode use vim
+- For permanent changing mode use vim
 - `vim /etc/selinux/config`
 
 - `semanage` (to manage SE Linux)
