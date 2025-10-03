@@ -8,3 +8,4 @@ This is the Day 10 notes.
 
 ## A little subtitle
 Write your notes here. You can add pictures, lists, and code blocks.
+
