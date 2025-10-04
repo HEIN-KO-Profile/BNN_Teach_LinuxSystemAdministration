@@ -4,7 +4,8 @@ Title: "Day 11: SE Linux & Open SSH Server"
 
 # Day 11: SE Linux & Open SSH Server
 
-## Subtitle: SE Linux, Open SSH Server, SSH Port Forwarding
+## Subtitle: E Linux (Security Enhance Linux), Open SSH Server, SH Port Forwarding (changing port number), Managing Karnel Version (setting default karnel),Using KVM instead of Orcale VM 
+
 ### SE Linux (Security Enhance Linux)
 
 For security 
@@ -90,15 +91,23 @@ Use SSH Server for
 
 #### Server Side
 - `default port SSH =22/tcp`
+1. Change port to desire_port_number  
 - `vim /etc/ssh/sshd_config` (change port number in line 21)
+- ESC
+- :set number 21
+- :21
+- Port desire_port_number  (e.g 2222)
 - `systemctl restart sshd`
-- `systemctl status sshd`
-- change the port number in firewall
+2. change the port number in firewall
 - `firewal-cmd -- permanent --add-port=2222/tcp`
-- add the port number in SE Linux
+- `firewall-cmd --reload`
+3. add the port number in SE Linux
 - `semanage port -l | grep "ssh"`
 - `semanage port -a -t ssh_port_t -p tcp port_number` (adding port)
 - `semanage port -d -t ssh_port_t -p tcp port_number` (deleting port)
+- `systemctl status sshd`
+- Checking for open ports
+- `ss -ntlp`
 
 #### Client side
 
@@ -139,16 +148,17 @@ ssh -p new_port_number root@servera
 
 - checking ports
 - `ss -ntlp`
+- `ssh -p 2222 root@server_name`
 
 ### Managing Karnel Version (setting default karnel)
-uname -r (to check karnel version)
-yum list kernal
-yum update karnel
-grub2-editenv list (to check default karnel)
-grup2-setdefault "karnel_version"
-grup2-mkconfig -o /boot/grub2/grub.cfg
-reboot  (init 6)
+- `uname -r`(to check karnel version)
+- `yum list kernel`
+- `yum update kernel`
+- `grub2-editenv list` (to check default karnel)
+- `grup2-set-default "karnel_version"`
+- `grup2-mkconfig -o /boot/grub2/grub.cfg`
+- `reboot`  (init 6)
 
-Using KVM instead of Orcale VM
+### Using KVM instead of Orcale VM
 kvm setup on Ubuntu_version (search in browser)
-egep -c '(vmx | svm)' /proc/cpuinfo
+- `egrep -c '(vmx | svm)' /proc/cpuinfo`   (Checking for Virtualization support, if not zero supportive)
