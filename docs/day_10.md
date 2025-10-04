@@ -2,15 +2,15 @@
 Title: "Day 10: NTP Service, Linux Networking - Linux to Linux, Interface Management, Managing Connections, DHCP, Static, Managing Linux Firewall"
 ---
 
-## Day 10: Linux Networking
+# Day 10: Linux Networking
 
-### Subtitle: NTP Service, Linux Networking - Linux to Linux, Interface Management, Managing Connections, DHCP, Static, Managing Linux Firewall
+## Subtitle: NTP Service (Network Time Protocol use in Bank), Linux Networking - Linux to Linux, IManaging Interfaces, Managing Connections, Managing Linux Firewall (Hardware Firewall & Software Firewall), 
 
 These are the Day 10 notes.
 
 ---
 
-## NTP Service (Network Time Protocol use in Bank)
+### NTP Service (Network Time Protocol use in Bank)
 
 - `timedatectl` → Check NTP service  
 - `systemctl status chronyd`  
@@ -22,7 +22,7 @@ These are the Day 10 notes.
 - Restart service:
 - `systemctl restart chronyd`
 
- ### Linux Networking - Linux to Linux
+### Linux Networking - Linux to Linux
 Linux Networking — Linux to Linux
 
 ### Managing Interfaces
